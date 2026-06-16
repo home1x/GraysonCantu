@@ -68,7 +68,6 @@
             font-size: 3.5rem;
             font-weight: 700;
             letter-spacing: 12px;
-            /* Changed to allow normal capitalization */
             text-transform: none; 
             color: #ffffff;
             text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
@@ -78,14 +77,6 @@
 
         h1:hover {
             transform: scale(1.03);
-        }
-
-        .subtitle {
-            font-size: 0.8rem;
-            font-weight: 200;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            color: #888888;
         }
 
         /* --- LINKS & NAVIGATION --- */
@@ -234,10 +225,6 @@
                 font-size: 2.5rem;
                 letter-spacing: 8px;
             }
-            .subtitle {
-                font-size: 0.7rem;
-                letter-spacing: 4px;
-            }
             .links-container, .subscribe-panel {
                 padding: 1.2rem;
                 width: 92%;
@@ -263,7 +250,6 @@
         
         <header class="interactive-element">
             <h1>Parallax</h1>
-            <p class="subtitle">Official Portal</p>
         </header>
 
         <main class="links-container interactive-element">
@@ -312,8 +298,8 @@
         const ctx = canvas.getContext('2d');
 
         let particles = [];
-        const particleCount = 150;
-        let mouse = { x: null, y: null, radius: 150 };
+        const particleCount = 220; // Increased count for a denser monochrome galaxy depth
+        let mouse = { x: null, y: null, radius: 170 };
 
         function resizeCanvas() {
             canvas.width = window.innerWidth;
@@ -340,11 +326,14 @@
             reset() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                const grayValue = Math.floor(Math.random() * 155) + 100; 
-                this.color = `rgba(${grayValue}, ${grayValue}, ${grayValue}, ${Math.random() * 0.6 + 0.2})`;
-                this.size = Math.random() * 2.5 + 0.5;
-                this.speedX = (Math.random() - 0.5) * 0.3;
-                this.speedY = (Math.random() - 0.5) * 0.3;
+                
+                // Pure monochrome profile: variance strictly across high-contrast greys and whites
+                const monochromeValue = Math.floor(Math.random() * 185) + 70; 
+                this.color = `rgba(${monochromeValue}, ${monochromeValue}, ${monochromeValue}, ${Math.random() * 0.7 + 0.15})`;
+                
+                this.size = Math.random() * 2.2 + 0.4;
+                this.speedX = (Math.random() - 0.5) * 0.25;
+                this.speedY = (Math.random() - 0.5) * 0.25;
                 this.baseSize = this.size;
             }
 
@@ -363,11 +352,11 @@
                     
                     if (distance < mouse.radius) {
                         const force = (mouse.radius - distance) / mouse.radius;
-                        this.x -= (dx / distance) * force * 2;
-                        this.y -= (dy / distance) * force * 2;
-                        this.size = this.baseSize * (1 + force * 1.5);
+                        this.x -= (dx / distance) * force * 1.8;
+                        this.y -= (dy / distance) * force * 1.8;
+                        this.size = this.baseSize * (1 + force * 1.3);
                     } else {
-                        if (this.size > this.baseSize) this.size -= 0.1;
+                        if (this.size > this.baseSize) this.size -= 0.08;
                     }
                 }
             }
@@ -376,7 +365,7 @@
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fillStyle = this.color;
-                ctx.shadowBlur = this.size * 2;
+                ctx.shadowBlur = this.size * 2.5;
                 ctx.shadowColor = '#ffffff';
                 ctx.fill();
                 ctx.shadowBlur = 0; 
@@ -391,7 +380,8 @@
         }
 
         function animate() {
-            ctx.fillStyle = 'rgba(5, 5, 5, 0.15)';
+            // Faint monochrome trace trail logic
+            ctx.fillStyle = 'rgba(5, 5, 5, 0.18)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             particles.forEach(particle => {
