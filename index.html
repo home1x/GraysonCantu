@@ -3,371 +3,419 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parallax // Void</title>
+    <title>PARALLAX | Official Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
-        /* --- CORE MINIMALIST CONFIG --- */
+        /* --- RESET & BASE STYLES --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            cursor: none; /* Hide default cursor for high-end feel */
+            user-select: none;
         }
 
         body, html {
             width: 100%;
             height: 100%;
-            background-color: #030303;
+            overflow-x: hidden;
+            background-color: #050505;
             color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            overflow: hidden;
-            letter-spacing: 0.1em;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
         }
 
-        /* --- THE EMISSIVE GALAXY INTERACTION MATRIX --- */
-        #nebulaCanvas {
+        /* --- INTERACTIVE CANVAS BACKGROUND --- */
+        #galaxy-canvas {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 1;
-        }
-
-        /* --- IMMERSIVE LAYOUT INTERFACE --- */
-        .viewport-frame {
-            position: relative;
-            z-index: 2;
             width: 100%;
             height: 100%;
-            display: grid;
-            grid-template-rows: 1fr auto 1fr;
-            padding: 60px;
-            pointer-events: none; /* Let calculations flow directly down to canvas */
-        }
-
-        .interactive-node {
-            pointer-events: auto; /* Re-engage interactions on UI text */
-        }
-
-        /* --- UPPER BRAND HUD --- */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .system-status {
-            font-size: 0.6rem;
-            text-transform: uppercase;
-            letter-spacing: 0.4em;
-            opacity: 0.3;
-        }
-
-        .store-pill {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            text-decoration: none;
-            color: #000;
-            background: #fff;
-            padding: 12px 30px;
-            font-weight: 600;
-            border-radius: 1px;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .store-pill:hover {
-            background: transparent;
-            color: #fff;
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
-        }
-
-        /* --- CENTRAL BRAND & CONVERSION GRID --- */
-        .center-core {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            max-width: 600px;
-        }
-
-        .artist-title {
-            font-family: "Times New Roman", Times, serif;
-            font-size: clamp(3rem, 8vw, 6.5rem);
-            font-weight: 400;
-            letter-spacing: -0.03em;
-            line-height: 0.9;
-            margin-bottom: 30px;
-            opacity: 0.95;
-            text-shadow: 0 0 40px rgba(255,255,255,0.05);
-        }
-
-        /* --- ULTRA-MINIMAL EMAIL MATRIX --- */
-        .email-capture {
-            position: relative;
-            width: 100%;
-            max-width: 380px;
-        }
-
-        .email-input {
-            width: 100%;
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 14px 0;
-            color: #fff;
-            font-size: 0.85rem;
-            outline: none;
-            transition: border-color 0.4s;
-        }
-
-        .email-input::placeholder {
-            color: rgba(255,255,255,0.2);
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            letter-spacing: 0.2em;
-        }
-
-        .email-input:focus {
-            border-color: rgba(255,255,255,0.8);
-        }
-
-        .email-submit {
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            background: transparent;
-            border: none;
-            color: #fff;
-            font-size: 1rem;
-            opacity: 0.4;
-            transition: all 0.3s;
-        }
-
-        .email-capture:hover .email-submit,
-        .email-input:focus + .email-submit {
-            opacity: 1;
-            transform: translateY(-50%) translateX(5px);
-        }
-
-        /* --- FOOTER SOCIAL STRUCTURING --- */
-        footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
-
-        .network-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px 60px;
-            list-style: none;
-        }
-
-        .network-grid li {
-            display: flex;
-            align-items: baseline;
-            gap: 10px;
-        }
-
-        .index-num {
-            font-size: 0.55rem;
-            opacity: 0.2;
-            font-family: monospace;
-        }
-
-        .network-grid a {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            text-decoration: none;
-            color: #fff;
-            opacity: 0.4;
-            transition: opacity 0.2s;
-        }
-
-        .network-grid a:hover {
-            opacity: 1;
-        }
-
-        /* --- RETICLE CUSTOM CURSOR --- */
-        #reticleCursor {
-            width: 6px;
-            height: 6px;
-            background: #fff;
-            border-radius: 50%;
-            position: fixed;
-            transform: translate(-50%, -50%);
+            z-index: 1;
             pointer-events: none;
-            z-index: 9999;
+            opacity: 0.6;
+        }
+
+        /* --- LAYOUT UTILITIES --- */
+        .glitch-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 3px, 6px 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 3;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 40px;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             mix-blend-mode: difference;
         }
 
-        #reticleRing {
-            width: 40px;
-            height: 40px;
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 50%;
-            position: fixed;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            z-index: 9998;
-            transition: width 0.3s, height 0.3s, background 0.3s;
+        .logo {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #fff;
+            transition: letter-spacing 0.4s ease;
         }
 
-        /* Dynamic interaction responses for custom pointer */
-        .interactive-node:hover ~ #reticleRing {
-            width: 60px;
-            height: 60px;
-            background: rgba(255,255,255,0.04);
-            border-color: rgba(255,255,255,0.4);
+        .logo:hover {
+            letter-spacing: 10px;
         }
 
-        /* --- SCALE RULES --- */
-        @media (max-width: 900px) {
-            .viewport-frame { padding: 30px; grid-template-rows: auto 1fr auto; gap: 40px; }
-            footer { flex-direction: column-reverse; align-items: flex-start; gap: 40px; }
-            .network-grid { grid-template-columns: repeat(2, 1fr); gap: 15px 40px; }
-            * { cursor: auto !important; } #reticleCursor, #reticleRing { display: none; }
+        nav a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-left: 30px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        .hero-title-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .hero-title {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 10vw;
+            line-height: 0.9;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            color: #ffffff;
+            opacity: 0.95;
+            transform: translate3d(0,0,0);
+        }
+
+        .hero-subtitle {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            color: rgba(255,255,255,0.4);
+            margin-top: 20px;
+            margin-left: 10px;
+        }
+
+        /* --- SOCIALS / LINKS HUB (MINIMALIST GRID) --- */
+        .links-section {
+            padding: 100px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-label {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            color: rgba(255,255,255,0.3);
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 100%); /* Stacked or wide look */
+            gap: 1px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        @media (min-width: 768px) {
+            .links-grid {
+                grid-template-columns: repeat(2, 100%);
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        .link-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 35px 20px;
+            background-color: #050505;
+            text-decoration: none;
+            color: #fff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: background-color 0.4s ease, padding-left 0.4s ease;
+        }
+
+        .link-row:hover {
+            background-color: #111111;
+            padding-left: 35px;
+        }
+
+        .link-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .link-arrow {
+            font-size: 1.5rem;
+            opacity: 0.3;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+
+        .link-row:hover .link-arrow {
+            transform: translateX(10px);
+            opacity: 1;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 60px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.4);
+            text-transform: uppercase;
+        }
+
+        /* --- SCROLLBAR --- */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #222;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #444;
         }
     </style>
 </head>
 <body>
 
-    <!-- Target Interaction Rings -->
-    <div id="reticleCursor"></div>
-    <div id="reticleRing"></div>
+    <div class="glitch-overlay"></div>
 
-    <!-- The Emissive Interaction Canvas -->
-    <canvas id="nebulaCanvas"></canvas>
+    <canvas id="galaxy-canvas"></canvas>
 
-    <div class="viewport-frame">
+    <header>
+        <a href="#" class="logo">PARALLAX</a>
+        <nav>
+            <a href="#hub">Enter</a>
+        </nav>
+    </header>
+
+    <div class="container">
         
-        <header>
-            <div class="system-status">Sub_Layer // Active</div>
-            <a href="https://boundless-official-store.printify.me/" target="_blank" class="interactive-node store-pill">Shop Store</a>
-        </header>
+        <section class="hero">
+            <div class="hero-title-wrapper">
+                <h1 class="hero-title">PARALLAX</h1>
+            </div>
+            <p class="hero-subtitle">Official Directory / Boundless Universe</p>
+        </section>
 
-        <div class="center-core">
-            <h1 class="artist-title">Parallax</h1>
+        <section class="links-section" id="hub">
+            <div class="section-label">// CONNECT WITH PARALLAX</div>
             
-            <form class="interactive-node email-capture" onsubmit="event.preventDefault(); alert('Identity logged.');">
-                <input type="email" class="email-input" placeholder="Subscribe for updates" required autocomplete="off">
-                <button type="submit" class="email-submit">→</button>
-            </form>
-        </div>
+            <div class="links-grid">
+                
+                <a href="https://boundless-official-store.printify.me/" target="_blank" class="link-row">
+                    <span class="link-name">Official Store</span>
+                    <span class="link-arrow">→</span>
+                </a>
+
+                <a href="https://www.instagram.com/parallax.x.x?igsh=eTlnM20xZW5lcDUx&utm_source=qr" target="_blank" class="link-row">
+                    <span class="link-name">Instagram</span>
+                    <span class="link-arrow">→</span>
+                </a>
+
+                <a href="https://m.youtube.com/@parallax.x.x?ra=m" target="_blank" class="link-row">
+                    <span class="link-name">YouTube</span>
+                    <span class="link-arrow">→</span>
+                </a>
+
+                <a href="https://x.com/Parallax_x_x" target="_blank" class="link-row">
+                    <span class="link-name">X // Twitter</span>
+                    <span class="link-arrow">→</span>
+                </a>
+
+                <a href="https://www.tiktok.com/@parallax.x.x?_r=1&_t=ZT-94UGGvXVNug" target="_blank" class="link-row">
+                    <span class="link-name">TikTok</span>
+                    <span class="link-arrow">→</span>
+                </a>
+
+                <a href="https://discord.com/invite/rhXuzGvM6" target="_blank" class="link-row">
+                    <span class="link-name">Discord Server Network</span>
+                    <span class="link-arrow">→</span>
+                </a>
+
+                <a href="https://www.facebook.com/Parallax.x.x.x.x/" target="_blank" class="link-row">
+                    <span class="link-name">Facebook</span>
+                    <span class="link-arrow">→</span>
+                </a>
+
+            </div>
+        </section>
 
         <footer>
-            <ul class="interactive-node network-grid">
-                <li><span class="index-num">01</span><a href="https://www.instagram.com/parallax.x.x?igsh=eTlnM20xZW5lcDUx&utm_source=qr" target="_blank">Instagram</a></li>
-                <li><span class="index-num">02</span><a href="https://m.youtube.com/@parallax.x.x?ra=m" target="_blank">YouTube</a></li>
-                <li><span class="index-num">03</span><a href="https://x.com/Parallax_x_x" target="_blank">X.com</a></li>
-                <li><span class="index-num">04</span><a href="https://www.facebook.com/Parallax.x.x.x.x/" target="_blank">Facebook</a></li>
-                <li><span class="index-num">05</span><a href="https://www.tiktok.com/@parallax.x.x?_r=1&_t=ZT-94UGGvXVNug" target="_blank">TikTok</a></li>
-                <li><span class="index-num">06</span><a href="https://discord.com/invite/rhXuzGvM6" target="_blank">Discord</a></li>
-            </ul>
+            <div>&copy; 2026 PARALLAX. ALL RIGHTS RESERVED.</div>
+            <div>BOUNDLESS OFFICIAL</div>
         </footer>
 
     </div>
 
-    <!-- GRAPHICSENGINE: EMISSIVE NEBULA VECTOR FIELDS -->
     <script>
-        const canvas = document.getElementById('nebulaCanvas');
+        const canvas = document.getElementById('galaxy-canvas');
         const ctx = canvas.getContext('2d');
-        const rDot = document.getElementById('reticleCursor');
-        const rRing = document.getElementById('reticleRing');
 
-        let w = canvas.width = window.innerWidth;
-        let h = canvas.height = window.innerHeight;
-
-        let mouse = { x: w/2, y: h/2, tx: w/2, ty: h/2 };
-
-        window.addEventListener('resize', () => {
-            w = canvas.width = window.innerWidth;
-            h = canvas.height = window.innerHeight;
-            buildGrid();
-        });
+        let particles = [];
+        let mouse = { x: null, y: null, radius: 150 };
 
         window.addEventListener('mousemove', (e) => {
-            mouse.tx = e.clientX;
-            mouse.ty = e.clientY;
-            
-            // Instantly track raw coordinate point
-            rDot.style.left = e.clientX + 'px';
-            rDot.style.top = e.clientY + 'px';
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
         });
 
-        // Construct high-density coordinate grid maps for smooth visual distortions
-        let nodes = [];
-        const spacing = 25; 
+        window.addEventListener('mouseout', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
 
-        function buildGrid() {
-            nodes = [];
-            for (let x = 0; x < w; x += spacing) {
-                for (let y = 0; y < h; y += spacing) {
-                    nodes.push({
-                        baseX: x + Math.random() * 10,
-                        baseY: y + Math.random() * 10,
-                        x: x,
-                        y: y,
-                        size: Math.random() * 1.2 + 0.4,
-                        opacity: Math.random() * 0.25 + 0.05
-                    });
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initGalaxy();
+        }
+
+        class Particle {
+            constructor(x, y, size, color, velocityX, velocityY) {
+                this.x = x;
+                this.y = y;
+                this.baseX = x;
+                this.baseY = y;
+                this.size = size;
+                this.color = color;
+                this.velocityX = velocityX;
+                this.velocityY = velocityY;
+                this.density = (Math.random() * 30) + 1;
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.closePath();
+                ctx.fill();
+            }
+
+            update() {
+                // Drift animation
+                this.baseX += this.velocityX;
+                this.baseY += this.velocityY;
+
+                // Infinite loop boundary wrap
+                if (this.baseX < 0) this.baseX = canvas.width;
+                if (this.baseX > canvas.width) this.baseX = 0;
+                if (this.baseY < 0) this.baseY = canvas.height;
+                if (this.baseY > canvas.height) this.baseY = 0;
+
+                // Interaction with mouse pointer
+                if (mouse.x != null && mouse.y != null) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.hypot(dx, dy);
+                    
+                    if (distance < mouse.radius) {
+                        let forceDirectionX = dx / distance;
+                        let forceDirectionY = dy / distance;
+                        let force = (mouse.radius - distance) / mouse.radius;
+                        let directionX = forceDirectionX * force * this.density;
+                        let directionY = forceDirectionY * force * this.density;
+
+                        this.x -= directionX;
+                        this.y -= directionY;
+                        return;
+                    }
                 }
+
+                // Smoothly return back to custom drift path
+                this.x += (this.baseX - this.x) * 0.1;
+                this.y += (this.baseY - this.y) * 0.1;
             }
         }
 
-        function engine() {
-            // Eased delay positioning for the main visual tracker circle
-            mouse.x += (mouse.tx - mouse.x) * 0.1;
-            mouse.y += (mouse.ty - mouse.y) * 0.1;
-            rRing.style.left = mouse.x + 'px';
-            rRing.style.top = mouse.y + 'px';
+        function initGalaxy() {
+            particles = [];
+            // Dynamically scale particle count based on screen size
+            const numberOfParticles = (canvas.width * canvas.height) / 4000; 
+            
+            for (let i = 0; i < numberOfParticles; i++) {
+                let x = Math.random() * canvas.width;
+                let y = Math.random() * canvas.height;
+                let size = Math.random() * 1.5 + 0.5;
+                
+                // Pure monochrome variations (white to dark gray points)
+                let greyValue = Math.floor(Math.random() * 155) + 100;
+                let color = `rgba(${greyValue}, ${greyValue}, ${greyValue}, ${Math.random() * 0.7 + 0.3})`;
+                
+                let velocityX = (Math.random() * 0.2) - 0.1;
+                let velocityY = (Math.random() * 0.2) - 0.1;
 
-            ctx.fillStyle = '#030303';
-            ctx.fillRect(0, 0, w, h);
-
-            nodes.forEach(n => {
-                // Determine distances from mouse beam coordinate
-                let dx = mouse.tx - n.x;
-                let dy = mouse.ty - n.y;
-                let dist = Math.sqrt(dx * dx + dy * dy);
-
-                // Cosmic field drift calculations
-                let speedMod = Date.now() * 0.0003 + (n.baseX * 0.05);
-                let ambientX = Math.sin(speedMod) * 4;
-                let ambientY = Math.cos(speedMod) * 4;
-
-                let targetX = n.baseX + ambientX;
-                let targetY = n.baseY + ambientY;
-
-                let currentOpacity = n.opacity;
-
-                // If within proximity of the mouse "flashlight", illuminate the monochrome galaxy grid
-                if (dist < 220) {
-                    let factor = (220 - dist) / 220;
-                    currentOpacity += factor * 0.65;
-                    
-                    // Soft structural warp
-                    targetX += (dx / dist) * factor * -15;
-                    targetY += (dy / dist) * factor * -15;
-                }
-
-                // Smooth coordinate mapping step
-                n.x += (targetX - n.x) * 0.1;
-                n.y += (targetY - n.y) * 0.1;
-
-                // Render vector star nodes
-                ctx.fillStyle = `rgba(255, 255, 255, ${currentOpacity})`;
-                ctx.beginPath();
-                ctx.arc(n.x, n.y, n.size, 0, Math.PI * 2);
-                ctx.fill();
-            });
-
-            requestAnimationFrame(engine);
+                particles.push(new Particle(x, y, size, color, velocityX, velocityY));
+            }
         }
 
-        buildGrid();
-        engine();
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+            }
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        animate();
     </script>
 </body>
 </html>
