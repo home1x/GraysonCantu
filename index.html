@@ -3,538 +3,378 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PARALLAX | Official Website</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <title>Parallax | Official</title>
     <style>
-        /* --- DESIGN SYSTEM & TOKENS --- */
-        :root {
-            --bg-color: #0a0a0a;
-            --bg-card: #121212;
-            --text-main: #ffffff;
-            --text-muted: #8a8a8a;
-            --accent: #ffffff;
-            --font-display: 'Syncopate', sans-serif;
-            --font-body: 'Space Grotesk', sans-serif;
-            --border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
+        /* --- RESET & GLOBAL STYLES --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            scroll-behavior: smooth;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: var(--font-body);
+            background-color: #0a0a0a;
+            color: #ffffff;
             overflow-x: hidden;
             letter-spacing: -0.02em;
         }
 
-        /* --- NAVIGATION --- */
-        nav {
+        /* --- BACKGROUND GRID EFFECT --- */
+        .grid-lines {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 2rem 4%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+            z-index: 1;
+            padding: 0 4%;
+        }
+
+        .grid-line {
+            width: 1px;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3 {
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        /* --- HEADER / NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 4%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 100;
-            background: linear-gradient(to bottom, rgba(10,10,10,0.8), transparent);
-            backdrop-filter: blur(10px);
-            border-bottom: rgba(255,255,255,0.05) 1px solid;
+            background: linear-gradient(to bottom, #0a0a0a 60%, transparent);
         }
 
-        .nav-logo {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -1px;
-            text-decoration: none;
-            color: var(--text-main);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-main);
-        }
-
-        /* --- HERO SECTION (Inspired by The Weeknd Concept) --- */
-        .hero {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            padding: 0 4%;
-            border-bottom: var(--border);
-        }
-
-        /* High contrast back-circle graphics */
-        .hero-graphic-circle {
-            position: absolute;
-            width: 65vh;
-            height: 65vh;
-            background: #ffffff;
-            border-radius: 50%;
-            z-index: 1;
-            mix-blend-mode: difference;
-        }
-
-        .hero-img {
-            position: absolute;
-            bottom: 0;
-            height: 90vh;
-            width: auto;
-            z-index: 2;
-            filter: grayscale(1) contrast(1.3) brightness(0.9);
-            mix-blend-mode: luminosity;
-            pointer-events: none;
-        }
-
-        .hero-title-wrapper {
-            position: relative;
-            z-index: 3;
-            text-align: center;
-            width: 100%;
-        }
-
-        .hero h1 {
-            font-family: var(--font-display);
-            font-size: 11vw;
-            line-height: 0.85;
-            text-transform: uppercase;
-            letter-spacing: -0.04em;
-            color: var(--text-main);
-        }
-
-        /* --- SPLIT RELEASES SECTION (Inspired by Split Layouts) --- */
-        .split-section {
-            display: flex;
-            min-height: 100vh;
-            border-bottom: var(--border);
-        }
-
-        @media (max-width: 768px) {
-            .split-section { flex-direction: column; }
-            .split-left, .split-right { width: 100% !important; min-height: 50vh; }
-        }
-
-        .split-left {
-            width: 45%;
-            border-right: var(--border);
-            padding: 6rem 4%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-        }
-
-        .split-left img {
-            width: 100%;
-            height: 65%;
-            object-fit: cover;
-            filter: grayscale(1) contrast(1.1);
-        }
-
-        .split-right {
-            width: 55%;
-            padding: 6rem 5%;
-            background-color: #0d0d0d;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .section-tag {
-            font-family: var(--font-display);
-            font-size: 3rem;
-            margin-bottom: 3rem;
-            text-transform: uppercase;
-            line-height: 1;
-        }
-
-        /* --- TRACKLIST / DISCOGRAPHY --- */
-        .track-list {
-            list-style: none;
-        }
-
-        .track-item {
-            display: flex;
-            align-items: center;
-            padding: 1.5rem 0;
-            border-bottom: rgba(255, 255, 255, 0.1) 1px solid;
-            transition: padding-left 0.3s ease;
-        }
-
-        .track-item:hover {
-            padding-left: 1rem;
-        }
-
-        .track-num {
-            font-family: var(--font-body);
-            font-size: 1rem;
-            color: var(--text-muted);
-            width: 3rem;
-        }
-
-        .track-title {
-            font-size: 1.5rem;
-            font-weight: 500;
-        }
-
-        .track-btn {
-            margin-left: auto;
-            color: var(--text-main);
-            text-decoration: none;
+        .logo {
             font-size: 1.2rem;
-            opacity: 0.5;
-            transition: opacity 0.3s;
+            font-weight: 900;
+            letter-spacing: 2px;
         }
 
-        .track-item:hover .track-btn {
+        nav a {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-left: 30px;
+            letter-spacing: 0.1em;
+            opacity: 0.6;
+        }
+
+        nav a:hover {
             opacity: 1;
         }
 
-        /* --- LATEST MUSIC / MEDIA (Daft Punk Grid style) --- */
-        .media-section {
-            padding: 8rem 4%;
-            border-bottom: var(--border);
-        }
-
-        .media-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        @media (max-width: 900px) {
-            .media-grid { grid-template-columns: 1fr; }
-        }
-
-        .video-container {
+        /* --- HERO SECTION (Inspired by Title Screens) --- */
+        .hero {
             position: relative;
-            width: 100%;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            background: var(--bg-card);
-            border: var(--border);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0 4%;
+            z-index: 2;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .video-container iframe {
+        .hero-title {
+            font-size: clamp(4rem, 15vw, 12rem);
+            line-height: 0.85;
+            letter-spacing: -0.04em;
+            margin-bottom: 20px;
+            background: linear-gradient(180deg, #ffffff 70%, #333333 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+            opacity: 0.5;
+            margin-top: 10px;
+        }
+
+        /* --- CONTENT SECTION ARCHITECTURE --- */
+        .container {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 100px 4%;
+            z-index: 2;
+        }
+
+        .section-header {
+            border-bottom: 1px solid #ffffff;
+            padding-bottom: 15px;
+            margin-bottom: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            line-height: 1;
+        }
+
+        .section-header .index-number {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.5;
+        }
+
+        /* --- STORE BANNER STYLING --- */
+        .store-banner {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 80px 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            margin-bottom: 120px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .store-banner h3 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            margin-bottom: 20px;
+            color: #000000;
+            max-width: 600px;
+            line-height: 0.95;
+        }
+
+        .store-btn {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 15px 40px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            margin-top: 20px;
+        }
+
+        .store-btn:hover {
+            background-color: #222222;
+            transform: translateY(-2px);
+        }
+
+        /* --- SOCIALS GRID / NETWORK --- */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1px;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin-bottom: 60px;
+        }
+
+        .link-card {
+            background-color: #0a0a0a;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 220px;
+            position: relative;
+        }
+
+        .link-card::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            filter: grayscale(1) contrast(1.1);
+            background: rgba(255, 255, 255, 0.02);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .network-box {
-            background-color: var(--bg-card);
-            border: var(--border);
-            padding: 3rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
+        .link-card:hover::before {
+            opacity: 1;
         }
 
-        .network-box h3 {
-            font-family: var(--font-display);
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .network-box p {
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        /* --- STORE SECTION --- */
-        .store-section {
-            padding: 8rem 4%;
-            border-bottom: var(--border);
-        }
-
-        .store-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .product-card {
-            background: var(--bg-card);
-            border: var(--border);
-            padding: 1rem;
-            text-decoration: none;
-            color: var(--text-main);
-            transition: transform 0.3s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .product-img {
-            width: 100%;
-            aspect-ratio: 1;
-            object-fit: cover;
-            background: #1a1a1a;
-            filter: grayscale(1);
-            margin-bottom: 1.5rem;
-            transition: filter 0.3s;
-        }
-
-        .product-card:hover .product-img {
-            filter: grayscale(0);
-        }
-
-        .product-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .product-title {
-            font-weight: 500;
-            font-size: 1.1rem;
-        }
-
-        /* --- BIG BUTTONS (Brutalist CTA) --- */
-        .cta-btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background-color: var(--text-main);
-            color: var(--bg-color);
-            text-decoration: none;
+        .link-card .platform-name {
+            font-size: 1.8rem;
             font-weight: 700;
             text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 0.05em;
-            transition: opacity 0.3s;
         }
 
-        .cta-btn:hover {
-            opacity: 0.9;
-        }
-
-        .cta-btn.outline {
-            background-color: transparent;
-            color: var(--text-main);
-            border: 1px solid var(--text-main);
-        }
-
-        .cta-btn.outline:hover {
-            background-color: var(--text-main);
-            color: var(--bg-color);
-        }
-
-        /* --- SOCIAL HUB FOOTER --- */
-        footer {
-            padding: 6rem 4% 3rem 4%;
-            background-color: #000000;
-        }
-
-        .footer-socials {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin-bottom: 4rem;
-        }
-
-        .social-link {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 2.5rem 1rem;
-            border: rgba(255, 255, 255, 0.05) 1px solid;
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.85rem;
+        .link-card .action-text {
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            transition: all 0.3s ease;
-        }
-
-        .social-link i {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--text-main);
-        }
-
-        .social-link:hover {
-            background-color: var(--bg-card);
-            color: var(--text-main);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .footer-bottom {
+            opacity: 0.4;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            color: var(--text-muted);
+        }
+
+        .link-card:hover .action-text {
+            opacity: 1;
+            padding-left: 5px;
+        }
+
+        /* --- DISCORD / NETWORK BLOCK --- */
+        .network-block {
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            padding: 50px;
+            text-align: center;
+            margin-top: 100px;
+            background-color: rgba(255, 255, 255, 0.01);
+        }
+
+        .network-block h3 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .network-block p {
+            opacity: 0.6;
+            margin-bottom: 30px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .network-btn {
+            display: inline-block;
+            border: 1px solid #ffffff;
+            padding: 15px 40px;
             font-size: 0.85rem;
-            border-top: rgba(255,255,255,0.05) 1px solid;
-            padding-top: 2rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        .network-btn:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px 4%;
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0.4;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            z-index: 2;
+            position: relative;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            nav { display: none; } /* Kept clean for mobile */
+            .store-banner { padding: 40px 30px; }
+            .network-block { padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a href="#" class="nav-logo">PARALLAX</a>
-        <ul class="nav-links">
-            <li><a href="#music">Music</a></li>
-            <li><a href="#store">Store</a></li>
-            <li><a href="#network">Network</a></li>
-        </ul>
-    </nav>
+    <div class="grid-lines">
+        <div class="grid-line"></div>
+        <div class="grid-line"></div>
+        <div class="grid-line"></div>
+        <div class="grid-line"></div>
+    </div>
+
+    <header>
+        <div class="logo">Parallax</div>
+        <nav>
+            <a href="#connect">Connect</a>
+            <a href="#store">Store</a>
+            <a href="#network">Network</a>
+        </nav>
+    </header>
 
     <section class="hero">
-        <div class="hero-graphic-circle"></div>
-        <img class="hero-img" src="IMG_1752.jpeg" alt="Parallax Portrait Image">
-        <div class="hero-title-wrapper">
-            <h1>PARALLAX</h1>
-        </div>
+        <h1 class="hero-title">Parallax</h1>
+        <div class="hero-subtitle">Official Digital Hub</div>
     </section>
 
-    <section id="music" class="split-section">
-        <div class="split-left">
-            <h2 class="section-tag" style="font-size: 1.8rem;">Latest Release</h2>
-            <img src="Album 8.png" alt="Current Album Project Cover Grid">
-            <div>
-                <p style="font-size: 1.2rem; font-weight: 500; margin-bottom: 0.5rem;">SHUDDER ON GETTING</p>
-                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Available on all streaming networks.</p>
-                <a href="#music" class="cta-btn">Listen Now</a>
-            </div>
-        </div>
-        <div class="split-right">
-            <h2 class="section-tag">Featured Hits</h2>
-            <ul class="track-list">
-                <li class="track-item">
-                    <span class="track-num">01</span>
-                    <span class="track-title">Blinding Lights (Remix)</span>
-                    <a href="#" class="track-btn"><i class="fa-solid fa-play"></i></a>
-                </li>
-                <li class="track-item">
-                    <span class="track-num">02</span>
-                    <span class="track-title">Starboy Dynamics</span>
-                    <a href="#" class="track-btn"><i class="fa-solid fa-play"></i></a>
-                </li>
-                <li class="track-item">
-                    <span class="track-num">03</span>
-                    <span class="track-title">The Birds Pt. III</span>
-                    <a href="#" class="track-btn"><i class="fa-solid fa-play"></i></a>
-                </li>
-                <li class="track-item">
-                    <span class="track-num">04</span>
-                    <span class="track-title">Earned It Vibe</span>
-                    <a href="#" class="track-btn"><i class="fa-solid fa-play"></i></a>
-                </li>
-                <li class="track-item">
-                    <span class="track-num">05</span>
-                    <span class="track-title">Save Your Tears Edit</span>
-                    <a href="#" class="track-btn"><i class="fa-solid fa-play"></i></a>
-                </li>
-            </ul>
-        </div>
-    </section>
+    <main class="container">
 
-    <section class="media-section">
-        <h2 class="section-tag">Latest AudioVisual</h2>
-        <div class="media-grid">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed?listType=user_uploads&list=parallax.x.x" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div id="network" class="network-box">
-                <h3>The Network</h3>
-                <p>Join the inner circle network community grid on Discord. Get access to secure drops, project tracking timelines, files, and community hubs before public access launch windows.</p>
-                <a href="https://discord.com/invite/rhXuzGvM6" target="_blank" class="cta-btn outline">Launch Access Server</a>
-            </div>
-        </div>
-    </section>
+        <section id="store" class="store-banner">
+            <h3>BOUNDLESS OFFICIAL STORE</h3>
+            <p style="max-width: 500px; margin-bottom: 20px; opacity: 0.8; font-size: 0.95rem; line-height: 1.4;">
+                Access exclusive apparel, drops, and official merchandise direct from the boundless collection.
+            </p>
+            <a href="https://boundless-official-store.printify.me/" target="_blank" class="store-btn">Shop Collection →</a>
+        </section>
 
-    <section id="store" class="store-section">
-        <h2 class="section-tag">Boundless Store</h2>
-        <div class="store-grid">
-            <a href="https://boundless-official-store.printify.me/" target="_blank" class="product-card">
-                <img class="product-img" src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=600&auto=format&fit=crop" alt="Product Drop Minimal">
-                <div class="product-info">
-                    <span class="product-title">ARCHIVE HOODIE 01</span>
-                    <span style="color: var(--text-muted);">Shop</span>
-                </div>
-            </a>
-            <a href="https://boundless-official-store.printify.me/" target="_blank" class="product-card">
-                <img class="product-img" src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=600&auto=format&fit=crop" alt="Product Drop Minimal">
-                <div class="product-info">
-                    <span class="product-title">BOUNDLESS OVERSIZED TEE</span>
-                    <span style="color: var(--text-muted);">Shop</span>
-                </div>
-            </a>
-            <a href="https://boundless-official-store.printify.me/" target="_blank" class="product-card">
-                <img class="product-img" src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=600&auto=format&fit=crop" alt="Product Drop Minimal">
-                <div class="product-info">
-                    <span class="product-title">PARALLAX CAP ARCHIVE</span>
-                    <span style="color: var(--text-muted);">Shop</span>
-                </div>
-            </a>
-        </div>
-    </section>
+        <section id="connect">
+            <div class="section-header">
+                <h2>Connect</h2>
+                <div class="index-number">// 02</div>
+            </div>
+
+            <div class="links-grid">
+                <a href="https://www.instagram.com/parallax.x.x?igsh=eTlnM20xZW5lcDUx&utm_source=qr" target="_blank" class="link-card">
+                    <div class="platform-name">Instagram</div>
+                    <div class="action-text">View Profile ↗</div>
+                </a>
+
+                <a href="https://m.youtube.com/@parallax.x.x?ra=m" target="_blank" class="link-card">
+                    <div class="platform-name">YouTube</div>
+                    <div class="action-text">Subscribe ↗</div>
+                </a>
+
+                <a href="https://x.com/Parallax_x_x" target="_blank" class="link-card">
+                    <div class="platform-name">X.com</div>
+                    <div class="action-text">Follow Feed ↗</div>
+                </a>
+
+                <a href="https://www.tiktok.com/@parallax.x.x?_r=1&_t=ZT-94UGGvXVNug" target="_blank" class="link-card">
+                    <div class="platform-name">TikTok</div>
+                    <div class="action-text">Watch Content ↗</div>
+                </a>
+
+                <a href="https://www.facebook.com/Parallax.x.x.x.x/" target="_blank" class="link-card">
+                    <div class="platform-name">Facebook</div>
+                    <div class="action-text">Join Community ↗</div>
+                </a>
+            </div>
+        </section>
+
+        <section id="network" class="network-block">
+            <h3>THE NETWORK</h3>
+            <p>Join the official Discord server. Interact directly, stay updated on community events, and enter the inner circle.</p>
+            <a href="https://discord.com/invite/rhXuzGvM6" target="_blank" class="network-btn">Enter Discord</a>
+        </section>
+
+    </main>
 
     <footer>
-        <div class="footer-socials">
-            <a href="https://www.instagram.com/parallax.x.x?igsh=eTlnM20xZW5lcDUx&utm_source=qr" target="_blank" class="social-link">
-                <i class="fa-brands fa-instagram"></i>
-                <span>Instagram</span>
-            </a>
-            <a href="https://m.youtube.com/@parallax.x.x?ra=m" target="_blank" class="social-link">
-                <i class="fa-brands fa-youtube"></i>
-                <span>YouTube</span>
-            </a>
-            <a href="https://x.com/Parallax_x_x" target="_blank" class="social-link">
-                <i class="fa-brands fa-x-twitter"></i>
-                <span>X / Twitter</span>
-            </a>
-            <a href="https://www.facebook.com/Parallax.x.x.x.x/" target="_blank" class="social-link">
-                <i class="fa-brands fa-facebook-f"></i>
-                <span>Facebook</span>
-            </a>
-            <a href="https://www.tiktok.com/@parallax.x.x?_r=1&_t=ZT-94UGGvXVNug" target="_blank" class="social-link">
-                <i class="fa-brands fa-tiktok"></i>
-                <span>TikTok</span>
-            </a>
-        </div>
-        <div class="footer-bottom">
-            <span>© 2026 PARALLAX. ALL RIGHTS RESERVED.</span>
-            <span>DESIGN STYLES CONCEPT INSPIRED BY EVE &amp; D-P</span>
-        </div>
+        &copy; Parallax. All Rights Reserved. Designed with brutalist principles.
     </footer>
 
 </body>
