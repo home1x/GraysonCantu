@@ -156,8 +156,8 @@
             letter-spacing: 1px;
         }
 
-        /* --- STORE BANNER UPGRADE --- */
-        .store-banner {
+        /* --- BANNER STYLING (ALBUMS & STORE) --- */
+        .info-banner {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             padding: 80px 60px;
@@ -169,7 +169,7 @@
             backdrop-filter: blur(5px);
         }
 
-        .store-banner h3 {
+        .info-banner h3 {
             font-size: clamp(2rem, 4vw, 3.5rem);
             margin-bottom: 20px;
             letter-spacing: 2px;
@@ -177,7 +177,7 @@
             text-transform: uppercase;
         }
 
-        .store-btn {
+        .action-btn {
             background: none;
             border: 1px solid var(--text-main);
             color: var(--text-main);
@@ -191,7 +191,7 @@
             transition: all 0.3s ease;
         }
 
-        .store-btn:hover {
+        .action-btn:hover {
             background: var(--text-main);
             color: var(--bg-deep);
             transform: translateY(-2px);
@@ -202,7 +202,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
-            margin-bottom: 60px;
+            margin-bottom: 120px; /* Kept spaced out from the next section */
         }
 
         .link-card {
@@ -312,7 +312,7 @@
         /* --- RESPONSIVE DESIGN --- */
         @media (max-width: 768px) {
             nav { display: none; }
-            .store-banner { padding: 40px 30px; }
+            .info-banner { padding: 40px 30px; }
             .network-block { padding: 40px 20px; }
             header { padding: 1.2rem 4%; }
             .logo-wrapper { height: 30px; }
@@ -325,17 +325,14 @@
 
     <header>
         <div class="logo-wrapper custom-signature-container">
-            <!-- Minimalist luxury abstract signature for 'Parallax' -->
             <svg class="signature-svg" viewBox="0 0 240 70" height="100%" xmlns="http://www.w3.org/2000/svg">
-                <!-- Abstract Geometric Capital P -->
                 <path class="signature-path" d="M 30 54 L 30 16 M 30 18 C 48 10, 68 18, 52 34 C 40 44, 30 40, 30 40" />
-                <!-- Ultra-smooth fluid running script thread (arallax) -->
                 <path class="signature-path" d="M 66 38 C 74 34, 76 46, 84 46 C 92 46, 96 34, 100 34 C 104 34, 106 46, 114 46 C 122 46, 128 22, 134 22 L 128 46 C 132 46, 136 22, 142 22 L 136 46 C 144 46, 146 34, 154 34 C 158 34, 160 46, 168 46 C 174 46, 184 34, 190 40" />
-                <!-- Sharp architectural architectural signature strike underline line -->
                 <path class="signature-path" d="M 45 56 L 210 50" stroke-width="1.2px" opacity="0.85" />
             </svg>
         </div>
         <nav>
+            <a href="#albums">Albums</a>
             <a href="#connect">Connect</a>
             <a href="#store">Store</a>
             <a href="#network">Network</a>
@@ -345,11 +342,8 @@
     <section class="hero">
         <div class="hero-title-wrapper custom-signature-container">
             <svg class="signature-svg" viewBox="0 0 240 70" width="100%" xmlns="http://www.w3.org/2000/svg">
-                <!-- Abstract Geometric Capital P -->
                 <path class="signature-path" d="M 30 54 L 30 16 M 30 18 C 48 10, 68 18, 52 34 C 40 44, 30 40, 30 40" />
-                <!-- Ultra-smooth fluid running script thread (arallax) -->
                 <path class="signature-path" d="M 66 38 C 74 34, 76 46, 84 46 C 92 46, 96 34, 100 34 C 104 34, 106 46, 114 46 C 122 46, 128 22, 134 22 L 128 46 C 132 46, 136 22, 142 22 L 136 46 C 144 46, 146 34, 154 34 C 158 34, 160 46, 168 46 C 174 46, 184 34, 190 40" />
-                <!-- Sharp architectural architectural signature strike underline line -->
                 <path class="signature-path" d="M 45 56 L 210 50" stroke-width="1.2px" opacity="0.85" />
             </svg>
         </div>
@@ -357,12 +351,12 @@
 
     <main class="container">
 
-        <section id="store" class="store-banner">
-            <h3>Store</h3>
+        <section id="albums" class="info-banner">
+            <h3>Albums</h3>
             <p>
-                Access exclusive apparel, drops, and official merchandise direct from the Parallax collection.
+                Explore the latest sounds, official discography, and sonic projects direct from the Parallax archive.
             </p>
-            <a href="https://home1x.github.io/Store/" target="_blank" class="store-btn">Shop collection →</a>
+            <a href="#" class="action-btn">Listen Now →</a>
         </section>
 
         <section id="connect">
@@ -398,6 +392,14 @@
             </div>
         </section>
 
+        <section id="store" class="info-banner">
+            <h3>Store</h3>
+            <p>
+                Access exclusive apparel, drops, and official merchandise direct from the Parallax collection.
+            </p>
+            <a href="https://home1x.github.io/Store/" target="_blank" class="action-btn">Shop collection →</a>
+        </section>
+
         <section id="network" class="network-block">
             <h3>The network</h3>
             <p>Join the official Discord server. Interact directly, stay updated on community events, and enter the inner circle.</p>
@@ -410,7 +412,6 @@
         &copy; 
         <span class="custom-signature-container" style="height: 20px; vertical-align: middle; margin: 0 4px;">
             <svg class="signature-svg" viewBox="0 0 240 70" height="100%" xmlns="http://www.w3.org/2000/svg">
-                <!-- Scaled Footer Variant -->
                 <path class="signature-path" d="M 30 54 L 30 16 M 30 18 C 48 10, 68 18, 52 34 C 40 44, 30 40, 30 40" stroke-width="3.5px" />
                 <path class="signature-path" d="M 66 38 C 74 34, 76 46, 84 46 C 92 46, 96 34, 100 34 C 104 34, 106 46, 114 46 C 122 46, 128 22, 134 22 L 128 46 C 132 46, 136 22, 142 22 L 136 46 C 144 46, 146 34, 154 34 C 158 34, 160 46, 168 46 C 174 46, 184 34, 190 40" stroke-width="3.5px" />
                 <path class="signature-path" d="M 45 56 L 210 50" stroke-width="2px" opacity="0.85" />
