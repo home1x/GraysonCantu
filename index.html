@@ -68,26 +68,12 @@
             text-transform: none;
             /* Creates a raw, bright white core with a cosmic outer glow */
             color: #ffffff;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
             text-shadow: 
-                0 0 10px rgba(255, 255, 255, 0.6),
-                0 0 20px rgba(255, 255, 255, 0.3),
-                0 0 40px rgba(255, 255, 255, 0.1);
-        }
-
-        /* Responsive image containers for the artwork logo mapping */
-        .logo-img {
-            height: 45px;
-            width: auto;
-            display: block;
-            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
-        }
-
-        .hero-img {
-            width: 100%;
-            max-width: 650px;
-            height: auto;
-            display: block;
-            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
+                0 0 8px rgba(255, 255, 255, 0.7),
+                0 0 25px rgba(255, 255, 255, 0.4),
+                0 0 50px rgba(255, 255, 255, 0.15);
         }
 
         /* --- CRYSTAL CLEAR FIXED HEADER --- */
@@ -108,7 +94,7 @@
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             letter-spacing: -0.05rem;
         }
 
@@ -139,9 +125,8 @@
         }
 
         .hero-title {
-            font-size: clamp(3.5rem, 12vw, 9rem); /* Dialed down slightly due to font expansion */
-            line-height: 1.3;
-            transform: rotate(-2deg); /* Added slight angle twist matching your original image */
+            font-size: clamp(3.5rem, 12vw, 8.5rem); 
+            transform: rotate(-3deg); /* Slightly more aggressive tilt matching your cover art */
         }
 
         /* --- LAYOUT CONTAINER --- */
@@ -323,7 +308,7 @@
             .store-banner { padding: 40px 30px; }
             .network-block { padding: 40px 20px; }
             header { padding: 1.2rem 4%; }
-            .logo-img { height: 35px; }
+            .logo { font-size: 1.2rem; }
             .hero-title { font-size: clamp(2.5rem, 10vw, 5rem); }
         }
     </style>
@@ -333,9 +318,7 @@
     <canvas id="space-canvas"></canvas>
 
     <header>
-        <div class="logo">
-            <img src="https://i.imgur.com/Gis4E6g.png" alt="Parallax" class="logo-img">
-        </div>
+        <div class="logo cursive-artist">Parallax</div>
         <nav>
             <a href="#connect">Connect</a>
             <a href="#store">Store</a>
@@ -344,9 +327,7 @@
     </header>
 
     <section class="hero">
-        <h1 class="hero-title">
-            <img src="https://i.imgur.com/Gis4E6g.png" alt="Parallax" class="hero-img">
-        </h1>
+        <h1 class="hero-title cursive-artist">Parallax</h1>
     </section>
 
     <main class="container">
