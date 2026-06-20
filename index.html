@@ -10,7 +10,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Rock+Salt&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 
     <style>
         /* --- RESET & ROOT VARIABLES --- */
@@ -63,19 +63,18 @@
 
         /* --- THE INJECTED CUSTOM ARTIST LOGO STYLE --- */
         .cursive-artist {
-            /* Prioritizing a highly elegant, flowing cursive look while keeping text-transform off */
-            font-family: 'Alex Brush', 'Rock Salt', cursive;
+            /* Switched to Permanent Marker for a heavy, marker-drawn rock style */
+            font-family: 'Permanent Marker', Chippewa, sans-serif;
             font-weight: 400;
             text-transform: none;
-            /* Loosened slightly for the sweeping script style to breathe */
-            letter-spacing: 0.02em; 
-            line-height: 1.1;
-            /* Creates a raw, bright white core with a cosmic outer glow */
+            letter-spacing: 0.05em; 
+            line-height: 1;
             color: #ffffff;
+            /* Sharper, more intense electric glow to feel more aggressive */
             text-shadow: 
-                0 0 8px rgba(255, 255, 255, 0.7),
-                0 0 25px rgba(255, 255, 255, 0.4),
-                0 0 50px rgba(255, 255, 255, 0.15);
+                0 0 5px rgba(255, 255, 255, 0.9),
+                0 0 15px rgba(255, 255, 255, 0.6),
+                0 0 30px rgba(255, 255, 255, 0.3);
         }
 
         /* --- CRYSTAL CLEAR FIXED HEADER --- */
@@ -96,7 +95,7 @@
         }
 
         .logo {
-            font-size: 2.2rem; /* Bumped slightly to account for the sleeker cursive script */
+            font-size: 1.8rem;
         }
 
         nav a {
@@ -126,8 +125,8 @@
         }
 
         .hero-title {
-            font-size: clamp(4.5rem, 14vw, 10rem); /* Maximized scaling for the sweeping font */
-            transform: rotate(-3deg); /* Slightly more aggressive tilt matching your cover art */
+            font-size: clamp(4rem, 13vw, 9.5rem); 
+            transform: rotate(-4deg); /* Kept the raw attitude tilt */
         }
 
         /* --- LAYOUT CONTAINER --- */
@@ -309,8 +308,8 @@
             .store-banner { padding: 40px 30px; }
             .network-block { padding: 40px 20px; }
             header { padding: 1.2rem 4%; }
-            .logo { font-size: 1.8rem; }
-            .hero-title { font-size: clamp(3.5rem, 12vw, 6.5rem); }
+            .logo { font-size: 1.5rem; }
+            .hero-title { font-size: clamp(3rem, 11vw, 6rem); }
         }
     </style>
 </head>
@@ -383,7 +382,7 @@
     </main>
 
     <footer>
-        &copy; <span class="cursive-artist" style="font-size: 1.3rem; vertical-align: middle;">Parallax</span>. all rights reserved.
+        &copy; <span class="cursive-artist" style="font-size: 1.1rem; vertical-align: middle;">Parallax</span>. all rights reserved.
     </footer>
 
     <script>
