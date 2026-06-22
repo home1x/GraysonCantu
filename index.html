@@ -8,7 +8,6 @@
 
     <title>Parallax</title>
 
-    <!-- GOOGLE KNOWLEDGE PANEL SCHEMA MARKUP -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -446,20 +445,20 @@
             transform: translateY(-2px);
         }
 
-        /* --- EMAIL SIGNUP SECTION --- */
+        /* --- EMAIL SIGNUP SECTION (COMPACT SIZE) --- */
         .newsletter-section {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            padding: 60px 40px;
+            padding: 40px 30px; /* Reduced from 60px 40px to make it smaller */
             backdrop-filter: blur(5px);
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 24px;
         }
 
         .newsletter-info h3 {
-            font-size: 2rem;
-            margin-bottom: 10px;
+            font-size: 1.8rem; /* Adjusted slightly down for hierarchy */
+            margin-bottom: 8px;
             letter-spacing: 1px;
             text-transform: capitalize;
         }
@@ -490,7 +489,7 @@
             color: var(--text-main);
             font-family: var(--font-mono);
             font-size: 1rem;
-            padding: 15px 0;
+            padding: 12px 0; /* Slightly tighter input window */
             flex-grow: 1;
             user-select: text;
         }
@@ -554,7 +553,7 @@
         @media (max-width: 768px) {
             nav { display: none; }
             .store-banner { padding: 40px 30px; }
-            .newsletter-section { padding: 40px 25px; }
+            .newsletter-section { padding: 30px 20px; } /* Scaled down even further for mobile viewports */
             header { padding: 1.2rem 4%; }
             .logo-wrapper { height: 30px; }
             section { margin-bottom: 100px; }
@@ -594,7 +593,6 @@
 
     <main class="container">
 
-        <!-- ALBUMS SECTION -->
         <section id="albums">
             <div class="section-header">
                 <h2>Albums</h2>
@@ -627,14 +625,12 @@
             </div>
         </section>
 
-        <!-- TOUR SECTION -->
         <section id="tour">
             <div class="section-header">
                 <h2>Tour</h2>
             </div>
             
             <div class="tour-table">
-                <!-- Headers -->
                 <div class="tour-header-row">
                     <div>Date</div>
                     <div>Venue</div>
@@ -643,7 +639,6 @@
                     <div style="text-align: right;">Status</div>
                 </div>
 
-                <!-- SHOW 1 -->
                 <div class="tour-data-row">
                     <div class="td-date">DATE HERE</div>
                     <div class="td-venue">VENUE NAME</div>
@@ -654,7 +649,6 @@
                     </div>
                 </div>
 
-                <!-- SHOW 2 -->
                 <div class="tour-data-row">
                     <div class="td-date">DATE HERE</div>
                     <div class="td-venue">VENUE NAME</div>
@@ -665,7 +659,6 @@
                     </div>
                 </div>
 
-                <!-- SHOW 3 -->
                 <div class="tour-data-row">
                     <div class="td-date">DATE HERE</div>
                     <div class="td-venue">VENUE NAME</div>
@@ -678,7 +671,6 @@
             </div>
         </section>
 
-        <!-- CONNECT SECTION -->
         <section id="connect">
             <div class="section-header">
                 <h2>Connect</h2>
@@ -717,7 +709,6 @@
             </div>
         </section>
 
-        <!-- STORE SECTION -->
         <section id="store" class="store-banner">
             <h3>Store</h3>
             <p>
@@ -726,10 +717,9 @@
             <a href="https://home1x.github.io/Store/" target="_blank" class="action-btn">Shop collection →</a>
         </section>
 
-        <!-- EMAIL SIGNUP SECTION -->
         <section id="newsletter" class="newsletter-section">
             <div class="newsletter-info">
-                <h3>Stay Updated</h3>
+                <h3>Newsletter</h3>
                 <p>Subscribe to receive exclusive drops, project updates, and early ticket access directly from Parallax.</p>
             </div>
             <form action="#" method="POST" class="newsletter-form">
