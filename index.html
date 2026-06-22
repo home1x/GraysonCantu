@@ -8,7 +8,6 @@
 
     <title>Parallax</title>
 
-    <!-- GOOGLE KNOWLEDGE PANEL SCHEMA MARKUP -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -419,6 +418,85 @@
             margin-bottom: 20px;
         }
 
+        /* --- NEW: SIGNUP SECTION DESIGN --- */
+        .signup-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 60px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .signup-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .signup-info {
+            max-width: 500px;
+        }
+
+        .signup-info h3 {
+            font-size: 2rem;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            text-transform: capitalize;
+        }
+
+        .signup-info p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .signup-form {
+            display: flex;
+            flex-grow: 1;
+            max-width: 600px;
+            width: 100%;
+            border-bottom: 1px solid var(--border-color);
+            transition: border-color 0.3s ease;
+        }
+
+        .signup-form:focus-within {
+            border-color: var(--text-main);
+        }
+
+        .signup-input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--text-main);
+            padding: 15px 0;
+            font-size: 1rem;
+            width: 100%;
+            font-family: var(--font-mono);
+        }
+
+        .signup-input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .signup-submit {
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            padding: 0 10px 0 20px;
+            text-transform: uppercase;
+            transition: opacity 0.3s ease;
+        }
+
+        .signup-submit:hover {
+            opacity: 0.7;
+        }
+
         .action-btn {
             background: none;
             border: 1px solid var(--text-main);
@@ -468,11 +546,14 @@
             }
             .td-action { justify-self: start; text-align: left; margin-top: 8px; width: 100%; }
             .tour-status { max-width: 100%; }
+            
+            .signup-container { flex-direction: column; align-items: flex-start; gap: 25px; }
+            .signup-form { max-width: 100%; }
         }
 
         @media (max-width: 768px) {
             nav { display: none; }
-            .store-banner { padding: 40px 30px; }
+            .store-banner, .signup-section { padding: 40px 30px; }
             header { padding: 1.2rem 4%; }
             .logo-wrapper { height: 30px; }
             section { margin-bottom: 100px; }
@@ -511,7 +592,6 @@
 
     <main class="container">
 
-        <!-- ALBUMS SECTION -->
         <section id="albums">
             <div class="section-header">
                 <h2>Albums</h2>
@@ -544,14 +624,12 @@
             </div>
         </section>
 
-        <!-- TOUR SECTION -->
         <section id="tour">
             <div class="section-header">
                 <h2>Tour</h2>
             </div>
             
             <div class="tour-table">
-                <!-- Headers -->
                 <div class="tour-header-row">
                     <div>Date</div>
                     <div>Venue</div>
@@ -560,7 +638,6 @@
                     <div style="text-align: right;">Status</div>
                 </div>
 
-                <!-- SHOW 1 -->
                 <div class="tour-data-row">
                     <div class="td-date">DATE HERE</div>
                     <div class="td-venue">VENUE NAME</div>
@@ -571,7 +648,6 @@
                     </div>
                 </div>
 
-                <!-- SHOW 2 -->
                 <div class="tour-data-row">
                     <div class="td-date">DATE HERE</div>
                     <div class="td-venue">VENUE NAME</div>
@@ -582,7 +658,6 @@
                     </div>
                 </div>
 
-                <!-- SHOW 3 -->
                 <div class="tour-data-row">
                     <div class="td-date">DATE HERE</div>
                     <div class="td-venue">VENUE NAME</div>
@@ -595,7 +670,6 @@
             </div>
         </section>
 
-        <!-- CONNECT SECTION -->
         <section id="connect">
             <div class="section-header">
                 <h2>Connect</h2>
@@ -634,13 +708,25 @@
             </div>
         </section>
 
-        <!-- STORE SECTION -->
         <section id="store" class="store-banner">
             <h3>Store</h3>
             <p>
                 Access premium garments, unique drops, and official merchandise direct from the curated Parallax collection line.
             </p>
             <a href="https://home1x.github.io/Store/" target="_blank" class="action-btn">Shop collection →</a>
+        </section>
+
+        <section id="newsletter" class="signup-section">
+            <div class="signup-container">
+                <div class="signup-info">
+                    <h3>The Transmission</h3>
+                    <p>Subscribe to receive early access code lines, private drops, and auditory updates direct from Parallax.</p>
+                </div>
+                <form class="signup-form" action="#" method="POST">
+                    <input type="email" class="signup-input" placeholder="ENTER YOUR EMAIL STRING..." required autocomplete="off">
+                    <button type="submit" class="signup-submit">Submit →</button>
+                </form>
+            </div>
         </section>
 
     </main>
