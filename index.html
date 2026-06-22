@@ -390,79 +390,80 @@
             padding-left: 5px;
         }
 
-        /* --- EMAIL SIGNUP SECTION --- */
-        .signup-section {
+        /* --- NEW SIGNUP SECTION --- */
+        .signup-banner {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
             backdrop-filter: blur(5px);
         }
 
-        .signup-flex {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .signup-text h3 {
-            font-size: 2rem;
+        .signup-banner h3 {
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            margin-bottom: 15px;
             letter-spacing: 1px;
-            margin-bottom: 10px;
             text-transform: capitalize;
         }
 
-        .signup-text p {
+        .signup-banner p {
             color: var(--text-muted);
             font-size: 0.95rem;
-            line-height: 1.5;
+            max-width: 500px;
+            line-height: 1.6;
+            margin-bottom: 30px;
         }
 
         .signup-form {
             display: flex;
             width: 100%;
             max-width: 550px;
-            gap: 15px;
+            gap: 10px;
         }
 
         .signup-input {
             flex: 1;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(0, 0, 0, 0.4);
             border: 1px solid var(--border-color);
             padding: 15px 20px;
             color: var(--text-main);
-            font-family: var(--font-mono);
             font-size: 0.9rem;
+            font-family: inherit;
+            letter-spacing: 0.05em;
             outline: none;
-            user-select: text;
-            transition: border-color 0.3s ease, background-color 0.3s ease;
-        }
-
-        .signup-input::placeholder {
-            color: #555555;
+            transition: border-color 0.3s ease;
         }
 
         .signup-input:focus {
-            border-color: rgba(255, 255, 255, 0.4);
-            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .signup-input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+            text-transform: capitalize;
         }
 
         .signup-btn {
-            background: var(--text-main);
-            color: var(--bg-deep);
+            background: none;
             border: 1px solid var(--text-main);
-            padding: 0 30px;
-            font-family: var(--font-mono);
+            color: var(--text-main);
+            padding: 15px 30px;
             font-size: 0.9rem;
+            font-family: var(--font-mono);
             font-weight: 700;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.1em;
             cursor: pointer;
-            text-transform: capitalize;
             transition: all 0.3s ease;
+            text-transform: uppercase;
         }
 
         .signup-btn:hover {
-            background: none;
-            color: var(--text-main);
+            background: var(--text-main);
+            color: var(--bg-deep);
         }
 
         /* --- SECTION 3: STORE BANNER (Minimal Density Rest-point) --- */
@@ -532,20 +533,6 @@
         }
 
         /* --- RESPONSIVE DESIGN --- */
-        @media (min-width: 769px) {
-            .signup-flex {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-            }
-            .signup-text {
-                max-width: 50%;
-            }
-            .signup-form {
-                flex: 1;
-            }
-        }
-
         @media (max-width: 992px) {
             .tour-header-row { display: none; }
             .tour-data-row {
@@ -560,10 +547,9 @@
 
         @media (max-width: 768px) {
             nav { display: none; }
-            .store-banner { padding: 40px 30px; }
-            .signup-section { padding: 40px 30px; }
-            .signup-form { flex-direction: column; max-width: 100%; }
-            .signup-btn { padding: 15px 0; text-align: center; }
+            .store-banner, .signup-banner { padding: 40px 30px; }
+            .signup-form { flex-direction: column; }
+            .signup-btn { width: 100%; }
             header { padding: 1.2rem 4%; }
             .logo-wrapper { height: 30px; }
             section { margin-bottom: 100px; }
@@ -586,6 +572,7 @@
             <a href="#albums">Albums</a>
             <a href="#tour">Tour</a>
             <a href="#connect">Connect</a>
+            <a href="#signup">Updates</a>
             <a href="#store">Store</a>
         </nav>
     </header>
@@ -718,17 +705,13 @@
             </div>
         </section>
 
-        <section id="signup" class="signup-section">
-            <div class="signup-flex">
-                <div class="signup-text">
-                    <h3>Transmission</h3>
-                    <p>Subscribe to receive early access codes, exclusive drops, and project updates straight from the source.</p>
-                </div>
-                <form class="signup-form" action="#" method="POST">
-                    <input type="email" class="signup-input" placeholder="ENTER YOUR EMAIL" required>
-                    <button type="submit" class="signup-btn">Subscribe</button>
-                </form>
-            </div>
+        <section id="signup" class="signup-banner">
+            <h3>Join the transmission</h3>
+            <p>Subscribe to receive exclusive notifications regarding upcoming project releases, tour dates, and private collection drops.</p>
+            <form class="signup-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Subscribed!');">
+                <input type="email" class="signup-input" placeholder="Your email address" required autocomplete="email">
+                <button type="submit" class="signup-btn">Subscribe</button>
+            </form>
         </section>
 
         <section id="store" class="store-banner">
