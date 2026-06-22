@@ -445,20 +445,20 @@
             transform: translateY(-2px);
         }
 
-        /* --- EMAIL SIGNUP SECTION (COMPACT SIZE) --- */
+        /* --- EMAIL SIGNUP SECTION --- */
         .newsletter-section {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            padding: 40px 30px; /* Reduced from 60px 40px to make it smaller */
+            padding: 60px 40px;
             backdrop-filter: blur(5px);
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 30px;
         }
 
         .newsletter-info h3 {
-            font-size: 1.8rem; /* Adjusted slightly down for hierarchy */
-            margin-bottom: 8px;
+            font-size: 2rem;
+            margin-bottom: 10px;
             letter-spacing: 1px;
             text-transform: capitalize;
         }
@@ -489,7 +489,7 @@
             color: var(--text-main);
             font-family: var(--font-mono);
             font-size: 1rem;
-            padding: 12px 0; /* Slightly tighter input window */
+            padding: 15px 0;
             flex-grow: 1;
             user-select: text;
         }
@@ -553,7 +553,7 @@
         @media (max-width: 768px) {
             nav { display: none; }
             .store-banner { padding: 40px 30px; }
-            .newsletter-section { padding: 30px 20px; } /* Scaled down even further for mobile viewports */
+            .newsletter-section { padding: 40px 25px; }
             header { padding: 1.2rem 4%; }
             .logo-wrapper { height: 30px; }
             section { margin-bottom: 100px; }
