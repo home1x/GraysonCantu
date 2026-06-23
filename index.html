@@ -44,9 +44,9 @@
         :root {
             --bg-deep: #0a0a0a;
             --card-bg: rgba(18, 18, 18, 0.7);
-            --border-color: rgba(255, 255, 255, 0.15);
+            --border-color: rgba(255, 255, 255, 0.12);
             --text-main: #ffffff;
-            --text-muted: #888888;
+            --text-muted: #777777;
             --font-mono: 'Courier New', Courier, monospace;
         }
 
@@ -108,7 +108,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            padding: 1.5rem 4%;
+            padding: 1rem 4%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -120,13 +120,13 @@
         }
 
         .logo-wrapper {
-            height: 38px;
+            height: 30px;
         }
 
         nav a {
             font-family: var(--font-mono);
-            font-size: 0.8rem;
-            margin-left: 24px;
+            font-size: 0.72rem;
+            margin-left: 20px;
             letter-spacing: 2px;
             color: var(--text-muted);
             text-transform: capitalize;
@@ -139,7 +139,7 @@
         /* --- HERO SECTION --- */
         .hero {
             position: relative;
-            min-height: 100vh;
+            min-height: 85vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -150,32 +150,32 @@
         }
 
         .hero-title-wrapper {
-            width: clamp(260px, 50vw, 500px);
+            width: clamp(200px, 35vw, 380px);
             transform: rotate(-1deg);
         }
 
         /* --- LAYOUT CONTAINER --- */
         .container {
             position: relative;
-            max-width: 1400px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 40px 4% 100px 4%;
+            padding: 20px 4% 80px 4%;
             z-index: 2;
         }
 
         section {
-            margin-bottom: 140px;
-            scroll-margin-top: 120px;
+            margin-bottom: 100px;
+            scroll-margin-top: 100px;
         }
 
         .section-header {
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 15px;
-            margin-bottom: 50px;
+            padding-bottom: 10px;
+            margin-bottom: 35px;
         }
 
         .section-header h2 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-size: clamp(1.6rem, 3.5vw, 2.5rem);
             line-height: 1;
             letter-spacing: 1px;
             text-transform: capitalize;
@@ -184,8 +184,8 @@
         /* --- SECTION 1: ALBUMS GRID --- */
         .albums-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
         }
 
         .album-card {
@@ -198,7 +198,7 @@
             aspect-ratio: 1 / 1;
             border: 1px solid var(--border-color);
             backdrop-filter: blur(5px);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             object-fit: cover;
             display: block;
@@ -206,19 +206,19 @@
 
         .album-card:hover .album-art {
             border-color: rgba(255, 255, 255, 0.4);
-            transform: translateY(-5px);
+            transform: translateY(-4px);
         }
 
         .album-details h4 {
-            font-size: 1.3rem;
+            font-size: 1.05rem;
             font-weight: 700;
             letter-spacing: 0.05em;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
 
         .album-details p {
             font-family: var(--font-mono);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             text-transform: capitalize;
         }
@@ -235,12 +235,12 @@
 
         .tour-header-row {
             display: grid;
-            grid-template-columns: 1.2fr 2fr 1.8fr 1.5fr 1fr;
-            padding: 20px 30px;
+            grid-template-columns: 1.2fr 2fr 1.8fr 1.5fr 0.8fr;
+            padding: 15px 25px;
             border-bottom: 1px solid var(--border-color);
             background: rgba(255, 255, 255, 0.02);
             font-family: var(--font-mono);
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             letter-spacing: 2px;
             color: var(--text-muted);
             text-transform: uppercase;
@@ -248,9 +248,9 @@
 
         .tour-data-row {
             display: grid;
-            grid-template-columns: 1.2fr 2fr 1.8fr 1.5fr 1fr;
-            padding: 35px 30px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            grid-template-columns: 1.2fr 2fr 1.8fr 1.5fr 0.8fr;
+            padding: 22px 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             align-items: center;
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
@@ -260,31 +260,31 @@
         }
 
         .tour-data-row:hover {
-            background: rgba(255, 255, 255, 0.03);
-            transform: scale(1.005);
+            background: rgba(255, 255, 255, 0.02);
+            transform: scale(1.002);
         }
 
         .td-date {
             font-family: var(--font-mono);
-            font-size: 1rem;
+            font-size: 0.85rem;
             font-weight: 700;
             letter-spacing: 0.05em;
         }
 
         .td-venue {
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: 800;
             letter-spacing: -0.01em;
         }
 
         .td-location {
-            font-size: 1rem;
+            font-size: 0.88rem;
             color: var(--text-main);
         }
 
         .td-lineup {
             font-family: var(--font-mono);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             line-height: 1.4;
         }
@@ -302,12 +302,11 @@
         .tour-status {
             display: inline-block;
             font-family: var(--font-mono);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             letter-spacing: 1px;
             text-transform: uppercase;
-            padding: 10px 20px;
+            padding: 8px 16px;
             width: 100%;
-            max-width: 1400px;
             text-align: center;
             border: 1px solid var(--border-color);
             transition: all 0.3s ease;
@@ -334,44 +333,44 @@
         }
 
         .status-soldout {
-            border-color: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.03);
             color: var(--text-muted);
-            opacity: 0.4;
+            opacity: 0.3;
             pointer-events: none;
         }
 
         /* --- SECTION 2: CONNECT GRID --- */
         .links-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
         }
 
         .link-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            padding: 40px;
+            padding: 25px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 200px;
+            min-height: 140px;
             transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .link-card:hover {
-            border-color: rgba(255, 255, 255, 0.4);
-            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
         }
 
         .link-card .platform-name {
-            font-size: 1.8rem;
+            font-size: 1.3rem;
             font-weight: 700;
             letter-spacing: 1px;
         }
 
         .link-card .action-text {
             font-family: var(--font-mono);
-            font-size: 0.8rem;
+            font-size: 0.72rem;
             letter-spacing: 0.1em;
             color: var(--text-muted);
             text-transform: capitalize;
@@ -380,14 +379,14 @@
 
         .link-card:hover .action-text {
             color: var(--text-main);
-            padding-left: 5px;
+            padding-left: 4px;
         }
 
         /* --- SECTION 3: STORE BANNER --- */
         .store-banner {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            padding: 80px 60px;
+            padding: 50px 40px;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -396,8 +395,8 @@
         }
 
         .store-banner h3 {
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            margin-bottom: 20px;
+            font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+            margin-bottom: 15px;
             letter-spacing: 2px;
             line-height: 0.95;
             text-transform: capitalize;
@@ -405,18 +404,18 @@
 
         .store-banner p {
             color: var(--text-muted);
-            font-size: 1rem;
-            max-width: 600px;
+            font-size: 0.88rem;
+            max-width: 500px;
             line-height: 1.6;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .action-btn {
             background: none;
             border: 1px solid var(--text-main);
             color: var(--text-main);
-            padding: 15px 40px;
-            font-size: 0.9rem;
+            padding: 12px 30px;
+            font-size: 0.78rem;
             font-family: var(--font-mono);
             font-weight: 700;
             letter-spacing: 0.1em;
@@ -436,31 +435,31 @@
         .newsletter-section {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            padding: 60px 40px;
+            padding: 40px 30px;
             backdrop-filter: blur(5px);
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 20px;
         }
 
         .newsletter-info h3 {
-            font-size: 2rem;
-            margin-bottom: 10px;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
             letter-spacing: 1px;
             text-transform: capitalize;
         }
 
         .newsletter-info p {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            max-width: 500px;
+            font-size: 0.85rem;
+            max-width: 450px;
             line-height: 1.5;
         }
 
         .newsletter-form {
             display: flex;
             width: 100%;
-            max-width: 550px;
+            max-width: 450px;
             border-bottom: 1px solid var(--border-color);
             transition: border-color 0.3s ease;
         }
@@ -475,16 +474,16 @@
             outline: none;
             color: var(--text-main);
             font-family: var(--font-mono);
-            font-size: 1rem;
-            padding: 15px 0;
+            font-size: 0.88rem;
+            padding: 10px 0;
             flex-grow: 1;
             user-select: text;
         }
 
         .newsletter-input::placeholder {
-            color: rgba(255, 255, 255, 0.3);
+            color: rgba(255, 255, 255, 0.25);
             text-transform: uppercase;
-            font-size: 0.8rem;
+            font-size: 0.72rem;
             letter-spacing: 2px;
         }
 
@@ -493,12 +492,12 @@
             border: none;
             color: var(--text-main);
             font-family: var(--font-mono);
-            font-size: 0.8rem;
+            font-size: 0.72rem;
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
             cursor: pointer;
-            padding: 0 10px 0 20px;
+            padding: 0 5px 0 15px;
             transition: opacity 0.3s ease;
         }
 
@@ -509,10 +508,10 @@
         /* --- FOOTER --- */
         footer {
             border-top: 1px solid var(--border-color);
-            padding: 40px 4%;
+            padding: 30px 4%;
             text-align: center;
             font-family: var(--font-mono);
-            font-size: 0.8rem;
+            font-size: 0.72rem;
             color: var(--text-muted);
             letter-spacing: 0.05em;
             z-index: 2;
@@ -529,21 +528,21 @@
             .tour-header-row { display: none; }
             .tour-data-row {
                 grid-template-columns: 1fr;
-                gap: 12px;
-                padding: 30px 20px;
+                gap: 8px;
+                padding: 22px 20px;
                 justify-items: start;
             }
-            .td-action { justify-self: start; text-align: left; margin-top: 8px; width: 100%; }
+            .td-action { justify-self: start; text-align: left; margin-top: 6px; width: 100%; }
             .tour-status { max-width: 100%; }
         }
 
         @media (max-width: 768px) {
             nav { display: none; }
-            .store-banner { padding: 40px 30px; }
-            .newsletter-section { padding: 40px 25px; }
-            header { padding: 1.2rem 4%; }
-            .logo-wrapper { height: 30px; }
-            section { margin-bottom: 100px; }
+            .store-banner { padding: 30px 20px; }
+            .newsletter-section { padding: 30px 20px; }
+            header { padding: 1rem 4%; }
+            .logo-wrapper { height: 24px; }
+            section { margin-bottom: 70px; }
         }
     </style>
 </head>
@@ -719,7 +718,7 @@
 
     <footer>
         &copy; 
-        <span class="custom-signature-container" style="height: 20px; vertical-align: middle; margin: 0 4px;">
+        <span class="custom-signature-container" style="height: 16px; vertical-align: middle; margin: 0 4px;">
             <svg class="signature-svg" viewBox="0 0 240 70" height="100%" xmlns="http://www.w3.org/2000/svg">
                 <path class="signature-path" d="M 30 54 L 30 16 M 30 18 C 48 10, 68 18, 52 34 C 40 44, 30 40, 30 40" stroke-width="3.5px" />
                 <path class="signature-path" d="M 66 38 C 74 34, 76 46, 84 46 C 92 46, 96 34, 100 34 C 104 34, 106 46, 114 46 C 122 46, 128 22, 134 22 L 128 46 C 132 46, 136 22, 142 22 L 136 46 C 144 46, 146 34, 154 34 C 158 34, 160 46, 168 46 C 174 46, 184 34, 190 40" stroke-width="3.5px" />
