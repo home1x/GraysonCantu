@@ -67,6 +67,7 @@
             height: 100vh;
             z-index: -1;
             pointer-events: none;
+            /* Hard backup colors in case script rendering is interrupted */
             background: radial-gradient(circle at 30% 40%, #222222 0%, #0c0c0c 45%, #000000 100%);
         }
 
@@ -181,7 +182,7 @@
             text-transform: capitalize;
         }
 
-        /* --- SECTION 1: ALBUMS GRID --- */
+        /* --- SECTION 1: ALBUMS GRID (DAFT PUNK STYLE) --- */
         .albums-wrapper {
             display: flex;
             justify-content: center;
@@ -190,11 +191,9 @@
 
         .albums-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, 140px);
+            grid-template-columns: repeat(4, 140px); /* Updated to 4 columns to fit the new album */
             gap: 1.5rem;
             justify-content: center;
-            width: 100%;
-            max-width: 660px;
         }
 
         .album-card {
@@ -543,7 +542,7 @@
         
         @media (max-width: 520px) {
             .albums-grid {
-                grid-template-columns: repeat(2, 130px);
+                grid-template-columns: repeat(2, 130px); /* Tidy stack on ultra mobile screens */
                 gap: 1rem;
             }
             .album-art {
@@ -617,7 +616,6 @@
                         </div>
                     </div>
 
-                    <!-- 4TH ALBUM ADDED BELOW -->
                     <div class="album-card">
                         <img src="Album 13.png" alt="Project IV Cover Art" class="album-art">
                         <div class="album-details">
@@ -715,7 +713,9 @@
 
         <section id="store" class="store-banner">
             <h3>Store</h3>
-            <p>Access premium garments, unique drops, and official merchandise direct from the curated Parallax collection line.</p>
+            <p>
+                Access premium garments, unique drops, and official merchandise direct from the curated Parallax collection line.
+            </p>
             <a href="https://home1x.github.io/Store/" target="_blank" class="action-btn">Shop collection ↗</a>
         </section>
 
@@ -748,18 +748,23 @@
         if (canvas) {
             const ctx = canvas.getContext('2d');
             let stars = [];
+            
+            // Interactive mouse coordinates tracking
             const mouse = { x: null, y: null, targetX: null, targetY: null };
 
+            // Listen to screen movement anywhere on the window
             window.addEventListener('mousemove', (e) => {
                 mouse.targetX = e.clientX;
                 mouse.targetY = e.clientY;
             });
 
+            // Reset target position when cursor leaves the window bounds
             window.addEventListener('mouseleave', () => {
                 mouse.targetX = null;
                 mouse.targetY = null;
             });
 
+            // Calculate total setup properties matching grid dimensions
             function resize() {
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
@@ -776,15 +781,18 @@
                         y: Math.random() * canvas.height,
                         radius: Math.random() * 1.6,
                         color: `rgba(${brightness}, ${brightness}, ${brightness}, ${Math.random() * 0.8 + 0.2})`,
+                        // Depth factor to determine parallax reaction speed (closer stars move faster)
                         depth: Math.random() * 0.03 + 0.005
                     });
                 }
             }
 
             function animate() {
+                // Render pitch black base frame framework continuous clear
                 ctx.fillStyle = '#000000';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+                // Deep ambient grey cluster dust cloud structure
                 const centerX = canvas.width * 0.35;
                 const centerY = canvas.height * 0.45;
                 const cloudRadius = Math.max(canvas.width, canvas.height) * 0.7;
@@ -798,6 +806,7 @@
                 ctx.fillStyle = gradient;
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+                // Smoothly ease the global mouse tracking coordinates
                 if (mouse.targetX !== null && mouse.targetY !== null) {
                     if (mouse.x === null) {
                         mouse.x = mouse.targetX;
@@ -807,6 +816,7 @@
                         mouse.y += (mouse.targetY - mouse.y) * 0.05;
                     }
                 } else {
+                    // Drift back toward center if mouse leaves screen
                     if (mouse.x !== null) {
                         mouse.x += (canvas.width / 2 - mouse.x) * 0.02;
                         mouse.y += (canvas.height / 2 - mouse.y) * 0.02;
@@ -816,13 +826,17 @@
                     }
                 }
 
+                // Calculate off-center offset vectors from viewport center
                 const offsetX = mouse.x - (canvas.width / 2);
                 const offsetY = mouse.y - (canvas.height / 2);
 
+                // Paint the grey and white star systems using a true responsive parallax shift animation
                 stars.forEach(star => {
+                    // Shift coordinate position inversely based on depth tier matching your name style
                     const renderX = star.x - (offsetX * star.depth);
                     const renderY = star.y - (offsetY * star.depth);
 
+                    // Re-wrap bounding constraints smoothly if shift pulls them off canvas edge dimensions
                     let finalX = renderX % canvas.width;
                     let finalY = renderY % canvas.height;
                     if (finalX < 0) finalX += canvas.width;
@@ -837,6 +851,7 @@
                 requestAnimationFrame(animate);
             }
 
+            // Bind framework events and execute running loops
             window.addEventListener('resize', resize);
             resize();
             animate();
