@@ -191,9 +191,11 @@
 
         .albums-grid {
             display: grid;
-            grid-template-columns: repeat(3, 140px); /* Small, uniform block size */
+            grid-template-columns: repeat(auto-fit, 140px); /* Adjusted layout rule to properly tier 4 albums smoothly */
             gap: 1.5rem;
             justify-content: center;
+            width: 100%;
+            max-width: 660px;
         }
 
         .album-card {
@@ -252,7 +254,7 @@
             border-bottom: 1px solid var(--border-color);
             background: rgba(255, 255, 255, 0.02);
             font-family: var(--font-mono);
-            font-size: 0.7rem;
+            font-size: 0.7.rem;
             letter-spacing: 2px;
             color: var(--text-muted);
             text-transform: uppercase;
@@ -612,6 +614,15 @@
                         <img src="Album 10.jpeg" alt="Project III Cover Art" class="album-art">
                         <div class="album-details">
                             <h4>Project III</h4>
+                            <p>Coming soon</p>
+                        </div>
+                    </div>
+
+                    <!-- Verbatim Name Referencing Added Here -->
+                    <div class="album-card">
+                        <img src="Album 13.png" alt="Project IV Cover Art" class="album-art">
+                        <div class="album-details">
+                            <h4>Project IV</h4>
                             <p>Coming soon</p>
                         </div>
                     </div>
