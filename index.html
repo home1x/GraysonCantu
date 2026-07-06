@@ -191,7 +191,7 @@
 
         .albums-grid {
             display: grid;
-            grid-template-columns: repeat(4, 140px); /* Updated to 4 columns to fit the new album */
+            grid-template-columns: repeat(5, 140px); /* Updated to 5 columns to fit the new album */
             gap: 1.5rem;
             justify-content: center;
         }
@@ -623,6 +623,14 @@
                             <p>Coming soon</p>
                         </div>
                     </div>
+
+                    <div class="album-card">
+                        <img src="Album 14.jpg" alt="Project V Cover Art" class="album-art">
+                        <div class="album-details">
+                            <h4>Project V</h4>
+                            <p>Coming soon</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -771,6 +779,7 @@
                 initStars();
             }
 
+            // Paint the stars framework system layout rules configurations
             function initStars() {
                 stars = [];
                 const count = Math.floor((canvas.width * canvas.height) / 2500);
