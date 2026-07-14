@@ -15,8 +15,8 @@
         :root {
             --bg-color: #000000;
             --text-color: #ffffff;
-            --accent-color: #8a2be2; /* Neon Purple */
-            --accent-glow: rgba(138, 43, 226, 0.6);
+            --accent-color: #ffffff; /* Shifted from Purple to White Accent */
+            --accent-glow: rgba(255, 255, 255, 0.4);
             --font-display: 'Cinzel', serif;
             --font-sans: 'Montserrat', sans-serif;
             --font-signature: 'League Script', cursive;
@@ -201,26 +201,27 @@
             border-color: var(--accent-color);
             box-shadow: 0 0 20px var(--accent-glow);
             text-shadow: 0 0 5px rgba(255,255,255,0.5);
-            background-color: rgba(138, 43, 226, 0.1);
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
         .cta-btn:hover::before {
             left: 100%;
         }
 
-        /* Sections Common styling */
+        /* Sections Common styling - Compacted Padding */
         section.content-section {
-            padding: 120px 50px;
+            padding: 60px 50px;
             max-width: 1200px;
             margin: 0 auto;
-            min-height: 80vh;
+            min-height: auto;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
+        /* Section Header - Compacted Margin */
         .section-header {
-            margin-bottom: 60px;
+            margin-bottom: 30px;
             position: relative;
         }
 
@@ -257,8 +258,8 @@
 
         .music-card:hover {
             transform: translateY(-10px);
-            border-color: rgba(138, 43, 226, 0.3);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(138, 43, 226, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(255, 255, 255, 0.1);
         }
 
         .album-art {
@@ -280,7 +281,7 @@
 
         .music-card:hover .album-art i {
             transform: scale(1.1) rotate(5deg);
-            color: rgba(138, 43, 226, 0.3);
+            color: rgba(255, 255, 255, 0.3);
         }
 
         .music-info {
@@ -346,7 +347,7 @@
         }
 
         .tour-row:hover {
-            background: rgba(138, 43, 226, 0.05);
+            background: rgba(255, 255, 255, 0.05);
             border-bottom-color: var(--accent-color);
         }
 
@@ -406,7 +407,7 @@
         .video-placeholder i {
             font-size: 4rem;
             margin-bottom: 15px;
-            color: rgba(138, 43, 226, 0.4);
+            color: rgba(255, 255, 255, 0.4);
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -694,7 +695,7 @@
                 this.z = Math.random() * width;
                 this.px = this.x;
                 this.py = this.y;
-                this.color = Math.random() > 0.85 ? 'rgba(138, 43, 226, ' + (Math.random() * 0.6 + 0.4) + ')' : 'rgba(255,255,255,' + (Math.random() * 0.6 + 0.4) + ')';
+                this.color = Math.random() > 0.85 ? 'rgba(255, 255, 255, ' + (Math.random() * 0.6 + 0.4) + ')' : 'rgba(255,255,255,' + (Math.random() * 0.6 + 0.4) + ')';
             }
 
             update(speed) {
