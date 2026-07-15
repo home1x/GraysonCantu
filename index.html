@@ -270,8 +270,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            color: rgba(255,255,255,0.1);
-            font-size: 4rem;
+            color: rgba(255,255,255,0.15);
+            font-size: 2.2rem; /* REDUCED desktop icon size from 4rem */
             overflow: hidden;
         }
 
@@ -281,7 +281,7 @@
 
         .music-card:hover .album-art i {
             transform: scale(1.1) rotate(5deg);
-            color: rgba(255, 255, 255, 0.3);
+            color: rgba(255, 255, 255, 0.4);
         }
 
         .music-info {
@@ -329,54 +329,70 @@
             transform: translateX(5px);
         }
 
-        /* Tour Section styling */
+        /* Beautified Tour Section */
         .tour-list {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
         }
 
         .tour-row {
             display: grid;
-            grid-template-columns: 1.5fr 2fr 2fr 1fr;
-            padding: 25px;
-            background: rgba(5, 5, 5, 0.4);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            grid-template-columns: 120px 2fr 1.5fr 120px;
+            padding: 20px 30px;
+            background: rgba(10, 10, 10, 0.4);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 6px;
             align-items: center;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            backdrop-filter: blur(5px);
         }
 
         .tour-row:hover {
             background: rgba(255, 255, 255, 0.05);
-            border-bottom-color: var(--accent-color);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.05);
+            transform: translateX(5px);
         }
 
         .tour-date {
-            font-family: var(--font-display);
-            font-size: 1.1rem;
-            letter-spacing: 1px;
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--text-color);
+            text-transform: uppercase;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            padding-right: 15px;
         }
 
         .tour-venue {
             font-weight: 600;
-            letter-spacing: 1px;
+            font-size: 1.05rem;
+            letter-spacing: 1.5px;
+            padding-left: 20px;
+            color: #ffffff;
         }
 
         .tour-location {
-            color: rgba(255,255,255,0.6);
-            font-weight: 200;
+            color: rgba(255,255,255,0.5);
+            font-weight: 400;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .ticket-btn {
             justify-self: end;
             background: transparent;
-            border: 1px solid rgba(255,255,255,0.5);
+            border: 1px solid rgba(255,255,255,0.3);
             color: var(--text-color);
-            padding: 10px 25px;
+            padding: 10px 22px;
             text-transform: uppercase;
             font-size: 0.75rem;
             letter-spacing: 2px;
             text-decoration: none;
+            border-radius: 4px;
             transition: all 0.3s ease;
         }
 
@@ -384,6 +400,8 @@
             background-color: var(--text-color);
             color: var(--bg-color);
             font-weight: 600;
+            border-color: var(--text-color);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
         }
 
         /* Video Showcase Area */
@@ -405,7 +423,7 @@
         }
 
         .video-placeholder i {
-            font-size: 4rem;
+            font-size: 2.2rem; /* REDUCED desktop play icon size from 4rem */
             margin-bottom: 15px;
             color: rgba(255, 255, 255, 0.4);
             cursor: pointer;
@@ -431,12 +449,12 @@
 
         .social-links {
             display: flex;
-            gap: 35px;
+            gap: 30px;
         }
 
         .social-icon {
             color: rgba(255,255,255,0.5);
-            font-size: 1.5rem;
+            font-size: 1.15rem; /* REDUCED social icon size from 1.5rem */
             text-decoration: none;
             transition: all 0.3s ease;
         }
@@ -478,15 +496,28 @@
         /* Responsive adaptations */
         @media (max-width: 900px) {
             .tour-row {
-                grid-template-columns: 1fr 1fr;
-                gap: 15px;
+                grid-template-columns: 1fr;
+                gap: 12px;
                 padding: 20px;
+                text-align: center;
+            }
+            .tour-row:hover {
+                transform: none;
+            }
+            .tour-date {
+                border-right: none;
+                padding-right: 0;
+                font-size: 0.9rem;
+            }
+            .tour-venue {
+                padding-left: 0;
+                font-size: 1rem;
             }
             .ticket-btn {
-                grid-column: span 2;
-                justify-self: stretch;
-                text-align: center;
-                margin-top: 10px;
+                justify-self: center;
+                width: 100%;
+                max-width: 250px;
+                margin-top: 5px;
             }
             .hero-title {
                 font-size: 4.5rem;
@@ -577,19 +608,19 @@
             </div>
             <div class="tour-list">
                 <div class="tour-row">
-                    <div class="tour-date">DATE HERE</div>
+                    <div class="tour-date">OCT 12</div>
                     <div class="tour-venue">VENUE NAME</div>
                     <div class="tour-location">CITY, COUNTRY</div>
                     <a href="#" class="ticket-btn">Acquire</a>
                 </div>
                 <div class="tour-row">
-                    <div class="tour-date">DATE HERE</div>
+                    <div class="tour-date">NOV 04</div>
                     <div class="tour-venue">VENUE NAME</div>
                     <div class="tour-location">CITY, COUNTRY</div>
                     <a href="#" class="ticket-btn">Acquire</a>
                 </div>
                 <div class="tour-row">
-                    <div class="tour-date">DATE HERE</div>
+                    <div class="tour-date">DEC 19</div>
                     <div class="tour-venue">VENUE NAME</div>
                     <div class="tour-location">CITY, COUNTRY</div>
                     <a href="#" class="ticket-btn">Acquire</a>
