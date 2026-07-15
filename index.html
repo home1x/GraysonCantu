@@ -404,10 +404,10 @@
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
         }
 
-        /* Compacted Video Section */
+        /* Compact Video Grid (Enforced 2 Columns Everywhere) */
         .video-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr); /* Enforces exactly two columns */
             gap: 20px;
         }
 
@@ -440,7 +440,7 @@
         }
 
         .video-thumbnail i {
-            font-size: 2rem;
+            font-size: 1.8rem; /* Slightly smaller play icon to fit compact scale */
             color: rgba(255, 255, 255, 0.4);
             transition: all 0.3s ease;
             z-index: 5;
@@ -453,13 +453,13 @@
         }
 
         .video-info {
-            padding: 15px 20px;
+            padding: 10px 15px; /* Compact padding */
             background: rgba(5, 5, 5, 0.3);
             border-top: 1px solid rgba(255,255,255,0.02);
         }
 
         .video-title {
-            font-size: 0.85rem;
+            font-size: 0.75rem; /* Smaller title font for the compact 2x2 grid */
             font-weight: 600;
             letter-spacing: 1.5px;
             text-transform: uppercase;
@@ -549,9 +549,16 @@
                 max-width: 250px;
                 margin-top: 5px;
             }
+            /* Grid handles mobile scaling but maintains 2 side-by-side columns as requested */
             .video-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
+                gap: 10px;
+            }
+            .video-info {
+                padding: 8px 10px;
+            }
+            .video-title {
+                font-size: 0.65rem;
+                letter-spacing: 1px;
             }
             .hero-title {
                 font-size: 4.5rem;
