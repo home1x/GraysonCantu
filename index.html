@@ -404,36 +404,66 @@
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
         }
 
-        /* Video Showcase Area */
-        .video-container {
+        /* Compacted Video Section */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .video-card {
+            background: rgba(10,10,10,0.6);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 4px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .video-thumbnail {
             width: 100%;
             aspect-ratio: 16/9;
-            background-color: rgba(10,10,10,0.8);
-            border: 1px solid rgba(255,255,255,0.05);
+            background-color: #0c0c0c;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-        }
-
-        .video-placeholder {
-            text-align: center;
-            color: rgba(255,255,255,0.3);
-        }
-
-        .video-placeholder i {
-            font-size: 2.2rem; /* REDUCED desktop play icon size from 4rem */
-            margin-bottom: 15px;
-            color: rgba(255, 255, 255, 0.4);
             cursor: pointer;
-            transition: all 0.3s ease;
         }
 
-        .video-placeholder i:hover {
+        .video-thumbnail i {
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.4);
+            transition: all 0.3s ease;
+            z-index: 5;
+        }
+
+        .video-card:hover .video-thumbnail i {
             color: var(--accent-color);
-            transform: scale(1.1);
-            text-shadow: 0 0 15px var(--accent-glow);
+            transform: scale(1.15);
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .video-info {
+            padding: 15px 20px;
+            background: rgba(5, 5, 5, 0.3);
+            border-top: 1px solid rgba(255,255,255,0.02);
+        }
+
+        .video-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-color);
         }
 
         /* Footer styling & Social Matrix */
@@ -518,6 +548,10 @@
                 width: 100%;
                 max-width: 250px;
                 margin-top: 5px;
+            }
+            .video-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
             }
             .hero-title {
                 font-size: 4.5rem;
@@ -677,10 +711,96 @@
                 <h2 class="section-title">Videos</h2>
                 <div class="section-divider"></div>
             </div>
-            <div class="video-container">
-                <div class="video-placeholder">
-                    <i class="fa-regular fa-circle-play"></i>
-                    <p style="letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem;">Initialize Transmission</p>
+            <div class="video-grid">
+                <!-- Video 1 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <i class="fa-regular fa-circle-play"></i>
+                    </div>
+                    <div class="video-info">
+                        <p class="video-title">Transmission 01</p>
+                    </div>
+                </div>
+                <!-- Video 2 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <i class="fa-regular fa-circle-play"></i>
+                    </div>
+                    <div class="video-info">
+                        <p class="video-title">Transmission 02</p>
+                    </div>
+                </div>
+                <!-- Video 3 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <i class="fa-regular fa-circle-play"></i>
+                    </div>
+                    <div class="video-info">
+                        <p class="video-title">Transmission 03</p>
+                    </div>
+                </div>
+                <!-- Video 4 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <i class="fa-regular fa-circle-play"></i>
+                    </div>
+                    <div class="video-info">
+                        <p class="video-title">Transmission 04</p>
+                    </div>
+                </div>
+                <!-- Video 5 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <i class="fa-regular fa-circle-play"></i>
+                    </div>
+                    <div class="video-info">
+                        <p class="video-title">Transmission 05</p>
+                    </div>
+                </div>
+                <!-- Video 6 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <i class="fa-regular fa-circle-play"></i>
+                    </div>
+                    <div class="video-info">
+                        <p class="video-title">Transmission 06</p>
+                    </div>
+                </div>
+                <!-- Video 7 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <i class="fa-regular fa-circle-play"></i>
+                    </div>
+                    <div class="video-info">
+                        <p class="video-title">Transmission 07</p>
+                    </div>
+                </div>
+                <!-- Video 8 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <i class="fa-regular fa-circle-play"></i>
+                    </div>
+                    <div class="video-info">
+                        <p class="video-title">Transmission 08</p>
+                    </div>
+                </div>
+                <!-- Video 9 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <i class="fa-regular fa-circle-play"></i>
+                    </div>
+                    <div class="video-info">
+                        <p class="video-title">Transmission 09</p>
+                    </div>
+                </div>
+                <!-- Video 10 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <i class="fa-regular fa-circle-play"></i>
+                    </div>
+                    <div class="video-info">
+                        <p class="video-title">Transmission 10</p>
+                    </div>
                 </div>
             </div>
         </section>
